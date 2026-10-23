@@ -52,7 +52,6 @@ def test_archive_readback_excludes_spaced_windows_path(tmp_path: Path, packer) -
 def test_reject_machine_path_even_if_added_to_approved_document(
     tmp_path: Path, packer, monkeypatch
 ) -> None:
-    root = Path(__file__).resolve().parents[1]
     # A public document with an absolute path must be stopped, not silently sanitized.
     document = tmp_path / "NOTE.md"
     document.write_text("Build from C:" + "\\" + "a folder with spaces" + "\\" + "user\n")
