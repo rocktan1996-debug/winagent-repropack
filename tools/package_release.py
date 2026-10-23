@@ -117,14 +117,14 @@ def make_packages(source: Path, output: Path) -> dict[str, object]:
         "audit/SOURCE_SHA256.json": (
             json.dumps(manifest, indent=2, ensure_ascii=True) + "\n"
         ).encode(),
-        "audit/README.md": (
-            "# Independent source review\n\n"
-            "This archive contains the identical public source files and an independent "
-            "SHA-256 manifest. It deliberately **does not** include any review/evidence "
-            "build logs, local workspace paths, user diagnostics, raw files, or personal data.\n"
-            "Remote GitHub Actions / Windows 11 execution is not asserted. "
-            "Review code and test it in a trusted local environment before publication.\n"
-        ).encode(),
+        b"audit/README.mdb": (
+            b"# Independent source review\n\nb"
+            b"This archive contains the identical public source files and an independent b"
+            b"SHA-256 manifest. It deliberately **does not** include any review/evidence b"
+            b"build logs, local workspace paths, user diagnostics, raw files, or personal data.\nb"
+            b"Remote GitHub Actions / Windows 11 execution is not asserted. b"
+            b"Review code and test it in a trusted local environment before publication.\nb"
+        ),
     }
     _write_zip(release, base)
     _write_zip(audit, review_files)
