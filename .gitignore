@@ -1,0 +1,68 @@
+# Python
+.venv/
+.venv-*/
+.cache/
+.tmp/
+artifacts/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+# Secrets and local user data
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+*.pfx
+*.sqlite
+*.db
+# Private diagnostic artifacts (use synthetic examples in examples/)
+*.log
+*.trace
+*.har
+report*.json
+report*.md
+!docs/REPORT_SCHEMA_V1.md
+user-logs/
+private-data/
+# Editor
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Only curated synthetic fixture log may be committed
+!examples/synthetic.log
+
+# Local generated reports and review artifacts
+reports/
+.repropack-output/
+example-issue.md
+example-report.json
+with-excerpts.md
+demo-issue.md
+demo.json
+
+# Owner-local metadata; review bundles use sanitized copies where needed
+/HANDOFF.md
+/BRIEF.md
+/START.md
+/AGENTS.md
+
+# Explicitly keep owner-local handoffs, build evidence and historical prompts out of Git.
+/review/
+/prompts/
+/REVIEW_HANDOFF.md
+/LICENSE.template
+/docs/*
+!/docs/03_CLI_CONTRACT.md
+!/docs/04_SECURITY.md
+!/docs/QUICKSTART_ZH.md
+!/docs/REPORT_SCHEMA_V1.md
