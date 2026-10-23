@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-22T00:00:00Z",
+  "overallStatus": "warning",
+  "codexVersion": "0.0.0-dev.1+build.1",
+  "checks": {
+    "synthetic.install": {
+      "id": "synthetic.install", "category": "synthetic", "status": "ok",
+      "summary": "Synthetic check only", "details": {"sample": "not real diagnostic data"},
+      "remediation": null, "durationMs": 0
+    },
+    "synthetic.config": {
+      "id": "synthetic.config", "category": "synthetic", "status": "ok",
+      "summary": "Synthetic check only", "details": {"sample": ["one", "two"]},
+      "remediation": null, "durationMs": 0
+    },
+    "synthetic.warning": {
+      "id": "synthetic.warning", "category": "synthetic", "status": "warning",
+      "summary": "Synthetic warning", "details": {}, "notes": ["Synthetic only"],
+      "remediation": "Synthetic advice only", "durationMs": 0
+    },
+    "synthetic.failure": {
+      "id": "synthetic.failure", "category": "synthetic", "status": "fail",
+      "summary": "Synthetic failure", "details": {},
+      "issues": [{"severity": "fail", "cause": "Synthetic cause", "measured": null,
+                  "expected": null, "remedy": null, "fields": []}],
+      "remediation": null, "durationMs": 0
+    }
+  }
+}

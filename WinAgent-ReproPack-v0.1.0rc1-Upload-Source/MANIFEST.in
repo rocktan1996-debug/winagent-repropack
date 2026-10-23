@@ -1,0 +1,12 @@
+include LICENSE README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md pyproject.toml
+recursive-include src *.py
+recursive-include tests *.py *.json *.md
+include examples/synthetic.log examples/synthetic-doctor.json examples/synthetic-doctor-v1.json
+include docs/QUICKSTART_ZH.md docs/REPORT_SCHEMA_V1.md docs/03_CLI_CONTRACT.md docs/04_SECURITY.md
+prune review
+prune artifacts
+prune .tmp
+prune .cache
+prune .git
+exclude AGENTS.md BRIEF.md START.md HANDOFF.md REVIEW_HANDOFF.md LICENSE.template
+global-exclude *.pyc *.pyo

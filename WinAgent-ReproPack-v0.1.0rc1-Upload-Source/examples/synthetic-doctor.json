@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-22T01:00:00+08:00",
+  "overallStatus": "warning",
+  "codexVersion": "0.0.0-example",
+  "checks": {
+    "synthetic-system-check": {
+      "id": "synthetic-system-check",
+      "category": "system",
+      "status": "ok",
+      "summary": "Synthetic healthy example",
+      "details": [
+        "Authorization: Bearer DEMO_DO_NOT_PUBLISH"
+      ],
+      "issues": []
+    },
+    "synthetic-connectivity-check": {
+      "id": "synthetic-connectivity-check",
+      "category": "network",
+      "status": "warning",
+      "summary": "Synthetic warning",
+      "details": [
+        "C:\\Users\\ExampleUser\\private\\not_for_release.txt"
+      ],
+      "issues": [
+        {
+          "description": "EXAMPLE_SECRET_CANARY_IGNORE_ME"
+        }
+      ]
+    }
+  }
+}

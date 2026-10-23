@@ -1,0 +1,9 @@
+2026-10-22T01:00:00+08:00 stream disconnected before completion: Transport error: network error: error decoding response body
+2026-10-22T01:00:10+08:00 Selected model is at capacity. Please try a different model.
+2026-10-22T01:01:00+08:00 HTTP 503 server_overloaded
+2026-10-22T01:01:30+08:00 Error running remote compact task
+2026-10-22T01:02:00+08:00 Reconnecting 5/5
+2026-10-22T01:03:00+08:00 Failed operation timed out
+2026-10-22T01:04:00+08:00 Authorization: Bearer DEMO_NOT_VALID_EXAMPLE
+2026-10-22T01:05:00+08:00 log path C:\Users\ExampleUser\Documents\sample.txt
+2026-10-22T01:06:00+08:00 Just an ordinary information line.

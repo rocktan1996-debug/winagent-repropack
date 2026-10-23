@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "generator": {
+    "name": "WinAgent ReproPack",
+    "version": "0.1.0rc1"
+  },
+  "source": {
+    "type": "user-selected log",
+    "client": "generic"
+  },
+  "summary": {
+    "total_lines": 9,
+    "matched_event_lines": 6,
+    "unknown_timestamp_lines": 0,
+    "ambiguous_event_lines": 1,
+    "timezone_unknown_lines": 0
+  },
+  "events": [
+    {
+      "type": "remote_compact_failure",
+      "count": 1,
+      "first_observed_line": 4,
+      "last_observed_line": 4,
+      "first_seen": "2026-10-22T01:01:30+08:00",
+      "last_seen": "2026-10-22T01:01:30+08:00",
+      "line_numbers": [
+        4
+      ],
+      "redacted_excerpts": []
+    },
+    {
+      "type": "stream_disconnect",
+      "count": 1,
+      "first_observed_line": 1,
+      "last_observed_line": 1,
+      "first_seen": "2026-10-22T01:00:00+08:00",
+      "last_seen": "2026-10-22T01:00:00+08:00",
+      "line_numbers": [
+        1
+      ],
+      "redacted_excerpts": []
+    },
+    {
+      "type": "capacity",
+      "count": 2,
+      "first_observed_line": 2,
+      "last_observed_line": 3,
+      "first_seen": "2026-10-22T01:00:10+08:00",
+      "last_seen": "2026-10-22T01:01:00+08:00",
+      "line_numbers": [
+        2,
+        3
+      ],
+      "redacted_excerpts": []
+    },
+    {
+      "type": "reconnect_loop",
+      "count": 1,
+      "first_observed_line": 5,
+      "last_observed_line": 5,
+      "first_seen": "2026-10-22T01:02:00+08:00",
+      "last_seen": "2026-10-22T01:02:00+08:00",
+      "line_numbers": [
+        5
+      ],
+      "redacted_excerpts": []
+    },
+    {
+      "type": "timeout",
+      "count": 1,
+      "first_observed_line": 6,
+      "last_observed_line": 6,
+      "first_seen": "2026-10-22T01:03:00+08:00",
+      "last_seen": "2026-10-22T01:03:00+08:00",
+      "line_numbers": [
+        6
+      ],
+      "redacted_excerpts": []
+    }
+  ],
+  "doctor": {
+    "included": true,
+    "schema_version": 1,
+    "codex_version": "0.0.0-dev.1+build.1",
+    "overall_status": "warning",
+    "check_counts": {
+      "ok": 2,
+      "warning": 1,
+      "fail": 1
+    }
+  },
+  "warnings": [
+    "Symptoms do not establish root cause.",
+    "Review output before sharing.",
+    "Unknown private information may remain; manual review required.",
+    "Independent project; not affiliated with or endorsed by OpenAI."
+  ],
+  "privacy": {
+    "raw_log_embedded": false,
+    "redacted_excerpts_included": false,
+    "manual_review_required": true
+  }
+}
