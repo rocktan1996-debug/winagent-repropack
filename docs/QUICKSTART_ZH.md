@@ -1,6 +1,6 @@
 # 中文快速开始
 
-当前版本 `0.1.0rc1`，本地发布候选，等待独立审核。项目独立，未获 OpenAI 背书。只处理你主动指定的一份日志和可选的已有 Doctor JSON，不自动找日志、运行 Doctor、联网或上传。
+当前公开预发布版本为 [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1)，已通过 Windows/Ubuntu × Python 3.11/3.12 四组 GitHub CI。项目独立，未获 OpenAI 背书。只处理你主动指定的一份日志和可选的已有 Doctor JSON，不自动找日志、运行 Doctor、联网或上传。
 
 在项目目录用 PowerShell 执行（已有 Python 3.11+）：
 
@@ -21,4 +21,4 @@ New-Item -ItemType Directory -Force artifacts/zh-demo | Out-Null
 
 退出码：0 实际创建成功；2 参数/输入失败且无报告；3 输出不安全、冲突或已存在；5 内部或写入失败，检查选定输出位置再重试。失败尽力只清理可确认归属的本轮新文件，无法确认身份时保留。不要使用可能被并发改写、重定向的目录；路径检查并非原子快照。
 
-完整选项、限制和实测证据见 [README](../README.md)、[验收矩阵](RC_VERIFICATION_MATRIX.md) 和 [独立审阅交接](../REVIEW_HANDOFF.md)。Windows 11、本地 Ubuntu 和远端 CI 尚未验证；正式版权、名称核对和公开发布仍待所有者处理。
+完整选项、限制和实测证据见 [README](../README.md)、[验收矩阵](RC_VERIFICATION_MATRIX.md) 和 [独立审阅交接](../REVIEW_HANDOFF.md)。Windows 11 尚未单独验证；本项目已公开发布预览版，并采用 MIT 许可证。反馈请阅读 [安全试用指南](USER_FEEDBACK.md)；不要发送真实私人日志。
