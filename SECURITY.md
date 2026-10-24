@@ -6,13 +6,11 @@ WinAgent ReproPack is an independent offline tool, not affiliated with or endors
 
 ## Supported versions
 
-Security fixes will be targeted at the most recent public release when one exists. The current `0.1.0rc1` source candidate is not yet publicly released.
+The current public version is the [v0.1.0rc1 pre-release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1). Security fixes will be evaluated for affected supported releases. No response time is guaranteed.
 
 ## Reporting a vulnerability privately
 
-**When the repository is made public, its owner must immediately enable GitHub Private Vulnerability Reporting (PVR), before inviting external users:** Settings → Security and quality → Advanced Security → Private vulnerability reporting. GitHub currently offers PVR for public repositories. Once enabled, use the repository's **Security → Report a vulnerability** workflow. Do **not** put a vulnerability exploit, credentials, or real user data into public GitHub Issues.
-
-PVR availability/enablement has **not been verified** for this repository. Until it is available, refrain from public disclosure of sensitive details. This document does not claim a working private channel or promise any response time.
+GitHub Private Vulnerability Reporting (PVR) is enabled for this public repository (confirmed by the repository owner in GitHub settings). Use the repository's **Security → Report a vulnerability** workflow to report security concerns privately. Do **not** put vulnerability details, credentials or real user data in public Issues. If the private reporting workflow becomes unavailable, do not disclose sensitive information publicly; request a private contact method from the maintainer. No response time is guaranteed.
 
 Send only a minimal synthetic reproduction, the affected release, impact and suggested remediation. Never submit real personal diagnostics.
 

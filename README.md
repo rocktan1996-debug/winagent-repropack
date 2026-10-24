@@ -1,6 +1,6 @@
 # WinAgent ReproPack
 
-**0.1.0rc1 — locally audited source candidate; external release checks pending.** Independent project, not affiliated with or endorsed by OpenAI. Not yet published.
+**Public pre-release: [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1).** Independent project, not affiliated with or endorsed by OpenAI. This is an early preview, not a stable release.
 
 Turn one explicitly selected log and optional existing Doctor JSON into an editable Markdown issue draft or JSON v1 report. Runtime dependencies are empty: analysis uses only the Python standard library. No log discovery, automatic Doctor, network/LLM calls, subprocesses, telemetry, uploads or issue creation.
 
@@ -87,7 +87,7 @@ Doctor versions use a deliberately restrictive ASCII format: `MAJOR.MINOR.PATCH`
 .\.venv\Scripts\python.exe -m build --outdir artifacts/dist
 ```
 
-Use a fresh pytest base directory containing no user data: pytest manages it. Previous Windows local testing has incomplete Python 3.12 and symlink coverage. GitHub Actions is configured for Windows/Ubuntu × Python 3.11/3.12 but has not run on a remote repository. Windows 11 has not been verified. Do not claim those tests passed until actual evidence is available.
+Use a fresh pytest base directory containing no user data: pytest manages it. [GitHub Actions passed all four jobs](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/39994953117) for Windows and Ubuntu with Python 3.11/3.12 on the `v0.1.0rc1` release commit `42fc134`. Windows 11 has not been separately tested. New changes still require fresh CI verification.
 
 ## FAQ
 
@@ -99,4 +99,4 @@ Use a fresh pytest base directory containing no user data: pytest manages it. Pr
 
 **Does this prove an outage or fix a client?** No. Only text matches and supplied metadata are reported; reproduction/expected/actual/attempted-fix placeholders remain for the user.
 
-[CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md), [CHANGELOG](CHANGELOG.md). This source distribution includes an MIT `LICENSE`. For private vulnerability reports, enable GitHub private vulnerability reporting on the published repository before inviting external users; see [SECURITY](SECURITY.md). Remote CI and publication are not yet verified, and external OSS-program eligibility is not established.
+[CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md), [CHANGELOG](CHANGELOG.md). This source distribution includes an MIT `LICENSE`. For private vulnerability reports, use GitHub Security → Report a vulnerability; see [SECURITY](SECURITY.md). This public pre-release is available, but external adoption and eligibility for the Codex for Open Source program are not yet established.
