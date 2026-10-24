@@ -37,7 +37,7 @@ This log documents **completed and independently linkable repository activity**,
 | Signal | Verified state |
 | --- | --- |
 | Public GitHub Issues | No Issues recorded yet. |
-| Pull requests / code reviews | No PRs or public PR reviews recorded yet. |
+| Pull requests / code reviews | Maintainer-authored [PR #1](https://github.com/rocktan1996-debug/winagent-repropack/pull/1) was merged on 2026-10-24 for first-user onboarding improvements. Its [head CI](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/40099582785) passed all four jobs. No independent review is established by this self-authored PR. |
 | Stars / forks | 0 stars and 0 forks at this snapshot. Neither metric has an official eligibility threshold. |
 | Independent users / downstream integrations | **Not yet verified**. No user count, download total or downstream adoption is claimed. |
 | Issue triage / outside contribution reviews | **Not yet demonstrated**. These must be added only after genuine activity occurs. |

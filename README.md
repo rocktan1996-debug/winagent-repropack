@@ -8,16 +8,36 @@ Turn one explicitly selected log and optional existing Doctor JSON into an edita
 
 ## Install locally
 
-From this project directory in PowerShell, with an existing Python 3.11+ installation:
+With an existing Python 3.11+ installation, download `Source code (zip)` from the
+[public preview release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1),
+extract it, and open a terminal in the directory containing `pyproject.toml` and `examples/`.
+
+Windows PowerShell:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --cache-dir .cache/pip -e '.[dev]'
+.\.venv\Scripts\python.exe -m pip install .
 .\.venv\Scripts\repropack.exe --help
 .\.venv\Scripts\repropack.exe --version
 ```
 
-Version prints `repropack 0.1.0rc1`. No activation or PATH change is needed. Installation downloads development/build dependencies; analysis is offline. An existing audited local wheel can be installed with `python -m pip install --no-index --no-deps PATH_TO_WHEEL`. This RC has not been published to PyPI.
+Ubuntu / Linux:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install .
+.venv/bin/repropack --help
+.venv/bin/repropack --version
+```
+
+If Linux cannot create a venv because `ensurepip` is unavailable, install your
+distribution's matching Python venv support (often `python3-venv`) and retry.
+
+Version prints `repropack 0.1.0rc1`. No activation or PATH change is needed.
+Installation may download build dependencies; analysis is offline and has no runtime
+dependencies. Ordinary users do not need the developer test/build tools. An existing
+audited local wheel can be installed with `python -m pip install --no-index --no-deps PATH_TO_WHEEL`.
+This RC is a source preview, not a PyPI release or a downloadable executable.
 
 ## Quickstart with synthetic data
 
@@ -29,6 +49,9 @@ New-Item -ItemType Directory -Force artifacts/readme-demo | Out-Null
 .\.venv\Scripts\repropack.exe analyze --log examples/synthetic.log --doctor-json examples/synthetic-doctor-v1.json --output artifacts/readme-demo/report.json --format json
 .\.venv\Scripts\repropack.exe analyze --log examples/synthetic.log --output artifacts/readme-demo/fragments.md --client codex-cli --include-redacted-excerpts
 ```
+
+On Linux, first run `mkdir -p artifacts/readme-demo` and replace each
+`.\.venv\Scripts\repropack.exe` with `.venv/bin/repropack`.
 
 Each prints:
 
@@ -80,7 +103,12 @@ Doctor versions use a deliberately restrictive ASCII format: `MAJOR.MINOR.PATCH`
 
 ## Development and verification
 
+From a source checkout, install development dependencies separately:
+
 ```powershell
+.\.venv\Scripts\python.exe -m pip install --cache-dir .cache/pip -e '.[dev]'
+New-Item -ItemType Directory -Force .tmp, artifacts | Out-Null
+
 .\.venv\Scripts\python.exe -m pytest -q --cov=winagent_repropack --cov-branch --cov-report=term-missing --cov-fail-under=85 --basetemp=.tmp/pytest-local -o cache_dir=.cache/pytest
 .\.venv\Scripts\python.exe -m ruff check .
 .\.venv\Scripts\python.exe -m pip check
@@ -88,6 +116,33 @@ Doctor versions use a deliberately restrictive ASCII format: `MAJOR.MINOR.PATCH`
 ```
 
 Use a fresh pytest base directory containing no user data: pytest manages it. [GitHub Actions passed all four jobs](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/39994953117) for Windows and Ubuntu with Python 3.11/3.12 on the `v0.1.0rc1` release commit `42fc134`. Windows 11 has not been separately tested. New changes still require fresh CI verification.
+
+## Reproduce the installed-wheel demo
+
+After the development install and build above, run this from the repository root
+with your development Python:
+
+```powershell
+.\.venv\Scripts\python.exe tools/verify_wheel_demo.py --wheel-dir artifacts/dist
+```
+
+On Linux, replace `.\.venv\Scripts\python.exe` with `.venv/bin/python`.
+The maintainer tool creates a temporary clean virtual environment, installs only
+that local wheel with `--no-index --no-deps`, then launches its CLI with isolated
+Python (`-I`) outside the checkout. It checks module and console-entrypoint help/version, both synthetic reports
+against the existing Markdown/JSON goldens, refusal of existing outputs (exit 3),
+and unchanged input/output bytes on repeat attempts. The temporary environment
+and reports are removed on exit. This harness launches local subprocesses; the
+product's analysis still does not.
+
+Use a fresh build directory containing exactly one ReproPack wheel; the verifier
+refuses ambiguous directories rather than choosing a possibly stale version.
+
+Expected result starts with `PASS: clean offline wheel install`. No private logs,
+credentials, network upload or account access are needed. This is reproducible
+synthetic validation, **not** evidence of independent users, real-world accuracy,
+or a universal privacy guarantee. A local pass proves only the interpreter and OS
+used; fresh CI must verify the configured Windows/Ubuntu matrix before claiming it.
 
 ## FAQ
 
