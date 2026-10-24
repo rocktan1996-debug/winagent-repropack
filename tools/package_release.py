@@ -26,12 +26,14 @@ PUBLIC_FILES = (
     "docs/03_CLI_CONTRACT.md",
     "docs/04_SECURITY.md",
     "docs/QUICKSTART_ZH.md",
+    "docs/USER_FEEDBACK.md",
     "docs/REPORT_SCHEMA_V1.md",
     "examples/synthetic-doctor-v1.json",
     "examples/synthetic-doctor.json",
     "examples/synthetic.log",
     "pyproject.toml",
     "tools/package_release.py",
+    "tools/verify_wheel_demo.py",
 )
 
 # Only these trees can contribute files, and only the expected extensions.

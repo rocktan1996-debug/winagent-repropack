@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Strengthen installed-wheel validation using a clean offline venv, console/module checks, synthetic goldens, and no-overwrite/input-integrity assertions.
+- Align English end-user installation instructions with synthetic-first Windows/Linux onboarding.
+- Include the onboarding feedback document in source-package allowlists so the quickstart link remains usable.
+- Runtime version and behavior remain unchanged; no new release or independent adoption is claimed.
+
 ## 0.1.0rc1 — 2026-10-23 First public pre-release and privacy hardening
 
 - R4-01: strict allowlist for Doctor version prerelease and build labels; arbitrary metadata now safely refused by importer and renderers.

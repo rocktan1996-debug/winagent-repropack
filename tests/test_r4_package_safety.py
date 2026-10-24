@@ -59,3 +59,14 @@ def test_reject_machine_path_even_if_added_to_approved_document(
     monkeypatch.setattr(packer, "SOURCE_TREES", {})
     with pytest.raises(ValueError, match="Windows absolute path"):
         packer._entries(tmp_path)
+
+
+def test_packaged_quickstart_includes_feedback_target(tmp_path: Path, packer) -> None:
+    root = Path(__file__).resolve().parents[1]
+    out = packer.make_packages(root, tmp_path / "dist")
+    for name in (out["release_zip"], out["audit_zip"]):
+        with zipfile.ZipFile(tmp_path / "dist" / name) as archive:
+            quickstart = archive.read("docs/QUICKSTART_ZH.md").decode("utf-8")
+            assert "(USER_FEEDBACK.md)" in quickstart
+            expected_feedback = (root / "docs/USER_FEEDBACK.md").read_bytes()
+            assert archive.read("docs/USER_FEEDBACK.md") == expected_feedback

@@ -1,7 +1,9 @@
 include LICENSE README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md pyproject.toml
+include tools/package_release.py tools/verify_wheel_demo.py
 recursive-include src *.py
 recursive-include tests *.py *.json *.md
 include examples/synthetic.log examples/synthetic-doctor.json examples/synthetic-doctor-v1.json
+include docs/USER_FEEDBACK.md
 include docs/QUICKSTART_ZH.md docs/REPORT_SCHEMA_V1.md docs/03_CLI_CONTRACT.md docs/04_SECURITY.md
 prune review
 prune artifacts
