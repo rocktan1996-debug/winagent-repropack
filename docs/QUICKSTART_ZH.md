@@ -1,24 +1,61 @@
-# 中文快速开始
+# WinAgent ReproPack｜中文快速开始
 
-当前公开预发布版本为 [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1)，已通过 Windows/Ubuntu × Python 3.11/3.12 四组 GitHub CI。项目独立，未获 OpenAI 背书。只处理你主动指定的一份日志和可选的已有 Doctor JSON，不自动找日志、运行 Doctor、联网或上传。
+目前已有公开预览版 [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1)。它是一个离线 Python 命令行工具，帮助把用户主动选择的 AI 编程工具日志整理为 Markdown 或 JSON 格式的故障报告。项目独立于 OpenAI，并非官方产品。
 
-在项目目录用 PowerShell 执行（已有 Python 3.11+）：
+**第一次使用，请只运行项目自带的合成日志。不要公开真实 Codex 日志、凭据、Doctor 诊断数据或未经审查的报告。**
+
+## 1. 下载与安装
+
+需要 Python **3.11 或更高版本**。在上面的 Release 页面下载 `Source code (zip)` 并解压；在包含 `pyproject.toml` 与 `examples/` 的目录里打开终端。
+
+### Windows（PowerShell）
 
 ```powershell
+python --version
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --cache-dir .cache/pip -e '.[dev]'
+.\.venv\Scripts\python.exe -m pip install .
+New-Item -ItemType Directory -Force artifacts | Out-Null
 .\.venv\Scripts\repropack.exe --version
-New-Item -ItemType Directory -Force artifacts/zh-demo | Out-Null
-.\.venv\Scripts\repropack.exe analyze --log examples/synthetic.log --output artifacts/zh-demo/issue.md
-.\.venv\Scripts\repropack.exe analyze --log examples/synthetic.log --doctor-json examples/synthetic-doctor-v1.json --output artifacts/zh-demo/report.json --format json
+.\.venv\Scripts\repropack.exe analyze --log examples/synthetic.log --output artifacts/first-run.md
 ```
 
-成功提示为 `Report created; matched event lines: 6. MANUAL REVIEW REQUIRED before sharing.`。再次运行时换一个新输出名；工具不会覆盖已有文件。把 `--log` 换成你亲自选择的稳定本地文件即可分析自己的数据。没有 Doctor 文件就省略该参数，不需提供账号信息。
+### Ubuntu / Linux（终端）
 
-默认报告只保留统计、行号、可靠时间和白名单 Doctor 状态，不附原文、源文件名或路径。需要症状片段时明确加 `--include-redacted-excerpts`；当前只保留固定安全短语，每类最多 3 条、每条最多 200 字符，舍弃任意上下文。已知敏感模式的清洗不能保证识别所有秘密。发布前仍需人工检查版本、时间、业务信息和整个报告，并自行填写复现步骤。
+```bash
+python3 --version
+python3 -m venv .venv
+.venv/bin/python -m pip install .
+mkdir -p artifacts
+.venv/bin/repropack --version
+.venv/bin/repropack analyze --log examples/synthetic.log --output artifacts/first-run.md
+```
 
-日志限制：10 MiB / 50,000 行 / 每行原始字节 64 KiB（含 BOM 和换行）；Doctor JSON 限 1 MiB，`schemaVersion=1`，`checks` 必须是对象。仅支持严格 UTF-8 和可选初始 BOM，非法字节整份拒绝。没有明确时区不推断；一组中有不可靠时间就不输出该组绝对时间范围。
+安装依赖可能需要网络，但分析日志本身不联网，也不会自动上传数据。若系统中 Python 版本低于 3.11，请使用你已安装的 3.11+ 解释器。
 
-退出码：0 实际创建成功；2 参数/输入失败且无报告；3 输出不安全、冲突或已存在；5 内部或写入失败，检查选定输出位置再重试。失败尽力只清理可确认归属的本轮新文件，无法确认身份时保留。不要使用可能被并发改写、重定向的目录；路径检查并非原子快照。
+## 2. 查看结果
 
-完整选项、限制和实测证据见 [README](../README.md)、[验收矩阵](RC_VERIFICATION_MATRIX.md) 和 [独立审阅交接](../REVIEW_HANDOFF.md)。Windows 11 尚未单独验证；本项目已公开发布预览版，并采用 MIT 许可证。反馈请阅读 [安全试用指南](USER_FEEDBACK.md)；不要发送真实私人日志。
+成功时应显示 `Report created; matched event lines: 6. MANUAL REVIEW REQUIRED before sharing.`，然后打开 `artifacts/first-run.md`。示例共有 6 条匹配事件，是纯合成数据，不代表发生过真实故障。
+
+工具不会覆盖已存在的报告，因此再次运行请改用新的输出文件名。
+
+如需体验 JSON 输出，可将 `analyze` 命令改为：
+
+```text
+analyze --log examples/synthetic.log --doctor-json examples/synthetic-doctor-v1.json --format json --output artifacts/first-run.json
+```
+
+在上述命令前加上当前平台对应的可执行文件路径：Windows 是 `.\.venv\Scripts\repropack.exe`，Linux 是 `.venv/bin/repropack`。这里的 Doctor JSON 同样是虚构测试数据。
+
+## 3. 安全反馈
+
+可以自愿提交真实的试用体验：阅读 [安全试用反馈说明](USER_FEEDBACK.md)，然后在 [GitHub Issues](https://github.com/rocktan1996-debug/winagent-repropack/issues/new/choose) 提交遇到的安装问题或改进建议。
+
+请只使用合成测试内容，**不要上传私密日志、访问令牌、私人文件路径、账号信息或未复核的截图**。安全漏洞请使用 [私密漏洞报告渠道](../SECURITY.md)，不要公开到 Issues。
+
+## 4. 使用边界
+
+默认输出包含类别、次数、行号、部分时间和经过限制的 Doctor 状态数据，不包含原始完整日志，但**人工检查报告仍然必需**。工具并不能保证识别所有敏感信息，也不会自动运行 Doctor 或证明根因。
+
+日志上限为 10 MiB、50,000 行及每行 64 KiB；Doctor JSON 上限为 1 MiB。已有输出文件不会被覆盖；分析期间应使用稳定的本地普通文件和目录。详细限制见 [README](../README.md)、[安全说明](../SECURITY.md) 与 [报告字段结构](REPORT_SCHEMA_V1.md)。
+
+[Windows 和 Ubuntu，Python 3.11/3.12 CI 通过记录](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/39994953117)。这不代表已单独验证所有 Windows 11 配置或所有 AI 编程日志格式。
