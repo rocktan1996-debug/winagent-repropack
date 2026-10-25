@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Include required CI/ignore files in the sdist and verify shipped public packaging inputs against the checkout in CI.
+
 - Strengthen installed-wheel validation using a clean offline venv, console/module checks, synthetic goldens, and no-overwrite/input-integrity assertions.
 - Align English end-user installation instructions with synthetic-first Windows/Linux onboarding.
 - Include the onboarding feedback document in source-package allowlists so the quickstart link remains usable.
