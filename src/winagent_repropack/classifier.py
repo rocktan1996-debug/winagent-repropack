@@ -19,7 +19,7 @@ _RULES = (
         r"\bstatus code:\s*503(?!\w|\.[0-9])|"
         r"(?<![\w.])503\s+Service Unavailable\b",
     ),
-    (EventType.RECONNECT_LOOP, r"\breconnecting\s+[0-9]+/[0-9]+\b"),
+    (EventType.RECONNECT_LOOP, r"\breconnecting\s+[0-9]+/[0-9]+(?!\w|\.[0-9])"),
 )
 _PATTERNS = tuple((kind, re.compile(pattern, re.IGNORECASE)) for kind, pattern in _RULES)
 _TIMED_OUT = re.compile(r"\btimed out\b", re.IGNORECASE)

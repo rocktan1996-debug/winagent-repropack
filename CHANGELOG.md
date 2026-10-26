@@ -2,10 +2,11 @@
 
 ## Unreleased
 
+- Reject decimal reconnect counter suffixes instead of matching their integer prefix; preserve punctuation, category priority and once-per-line ambiguity counting with synthetic regressions.
 - Strengthen installed-wheel validation using a clean offline venv, console/module checks, synthetic goldens, and no-overwrite/input-integrity assertions.
 - Align English end-user installation instructions with synthetic-first Windows/Linux onboarding.
 - Include the onboarding feedback document in source-package allowlists so the quickstart link remains usable.
-- Runtime version and behavior remain unchanged; no new release or independent adoption is claimed.
+- Runtime version remains unchanged; no new release or independent adoption is claimed.
 
 ## 0.1.0rc1 — 2026-10-23 First public pre-release and privacy hardening
 
