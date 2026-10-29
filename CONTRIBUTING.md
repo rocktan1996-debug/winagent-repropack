@@ -1,6 +1,6 @@
 # Contributing
 
-The first public pre-release is available as [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1). Windows and Ubuntu CI with Python 3.11/3.12 passed at the release commit; Windows 11 has not been separately validated. Changes should continue to be tested and reviewed.
+The current source version is `0.1.0rc2`, intended for a GitHub pre-release, not a stable or PyPI release. See [GitHub releases](https://github.com/rocktan1996-debug/winagent-repropack/releases) for published artifacts and their exact-commit CI evidence. Windows 11 has not been separately validated. Changes should continue to be tested and reviewed.
 
 Use an existing Python 3.11+ interpreter and project-local venv. Install `.[dev]` using a project-local pip cache as in [README](README.md). Run pytest with coverage >=85%, Ruff and pip check; build sdist/wheel and smoke-test clean wheel installation for packaging changes. Use a fresh project-local pytest base directory. For PRs, include commands, exit codes, skipped tests and platform details in the PR description; never attach raw machine logs.
 

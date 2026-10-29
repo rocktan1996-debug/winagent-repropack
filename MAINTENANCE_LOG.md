@@ -38,7 +38,7 @@ This log documents **completed and independently linkable repository activity**,
 - Local validation on Linux/Python 3.12.14: 723 tests passed, 21 skipped, 95.69% branch coverage; Ruff, dependency checks, sdist/wheel builds and both artifact verifiers passed. The extracted sdist successfully ran the offline packaging tool and 11 related regression tests.
 - This entry records a maintenance candidate, not a released version or user adoption. Local and exact-commit cross-platform results are recorded in the accompanying pull request; no runtime behavior or golden fixtures changed.
 
-## Release and quality evidence
+## Release and quality evidence — historical snapshot, 2026-10-24
 
 - **Public package:** [v0.1.0rc1 GitHub pre-release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1); it is a source pre-release, **not** a claimed stable or PyPI release.
 - **Cross-platform CI:** [Windows + Ubuntu, Python 3.11 and 3.12](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/39994953117), all four jobs successful at the release commit. A later [documentation-update CI run](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/40071006872) also succeeded.

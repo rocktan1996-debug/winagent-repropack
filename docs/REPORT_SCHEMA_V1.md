@@ -5,7 +5,7 @@ Frozen/slotted `DiagnosticReport` is validated before either renderer. Stable JS
 | Field | Type and semantics |
 |---|---|
 | `schema_version` | integer 1; bool is not an integer schema |
-| `generator` | fixed name `WinAgent ReproPack`; version from `__version__`, currently `0.1.0rc1` |
+| `generator` | fixed name `WinAgent ReproPack`; version from `__version__`, currently `0.1.0rc2` |
 | `source` | fixed type `user-selected log`; selected client enum, default `generic` |
 | `summary.total_lines` | physical LF-separated lines, 0–50,000; empty/BOM-only =0 |
 | `summary.matched_event_lines` | <=total lines; equals sum of event counts |

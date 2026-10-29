@@ -6,7 +6,7 @@ WinAgent ReproPack is an independent offline tool, not affiliated with or endors
 
 ## Supported versions
 
-The current public version is the [v0.1.0rc1 pre-release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1). Security fixes will be evaluated for affected supported releases. No response time is guaranteed.
+The current public version is the [v0.1.0rc2 pre-release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc2). Security fixes will be evaluated for affected supported releases. No response time is guaranteed.
 
 ## Reporting a vulnerability privately
 

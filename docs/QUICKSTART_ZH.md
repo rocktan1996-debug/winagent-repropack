@@ -1,6 +1,6 @@
 # WinAgent ReproPack｜中文快速开始
 
-目前已有公开预览版 [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1)。它是一个离线 Python 命令行工具，帮助把用户主动选择的 AI 编程工具日志整理为 Markdown 或 JSON 格式的故障报告。项目独立于 OpenAI，并非官方产品。
+目前已有公开预览版 [v0.1.0rc2](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc2)。它是一个离线 Python 命令行工具，帮助把用户主动选择的 AI 编程工具日志整理为 Markdown 或 JSON 格式的故障报告。项目独立于 OpenAI，并非官方产品。
 
 **第一次使用，请只运行项目自带的合成日志。不要公开真实 Codex 日志、凭据、Doctor 诊断数据或未经审查的报告。**
 

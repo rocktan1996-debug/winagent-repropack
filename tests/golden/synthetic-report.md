@@ -9,7 +9,7 @@ Symptoms are observed text, not a verified diagnosis.
 ## Environment
 
 - Client: generic
-- Generator: WinAgent ReproPack 0\.1\.0rc1
+- Generator: WinAgent ReproPack 0\.1\.0rc2
 
 ## Observed symptom summary
 

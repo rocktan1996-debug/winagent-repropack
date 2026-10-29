@@ -1,6 +1,6 @@
 # 03 — CLI and normalized schema contract
 
-Implemented in source candidate `0.1.0rc1`. Windows and remote CI validation remain incomplete.
+Implemented in source candidate `0.1.0rc2`. The CI matrix covers Windows and Ubuntu with Python 3.11/3.12; consult the release notes for exact-commit results. Windows 11 has not been separately validated.
 
 ## CLI examples
 
@@ -58,7 +58,7 @@ that every possible log format is free of false positives or false negatives.
 ```json
 {
   "schema_version": 1,
-  "generator": {"name": "WinAgent ReproPack", "version": "0.1.0rc1"},
+  "generator": {"name": "WinAgent ReproPack", "version": "0.1.0rc2"},
   "source": {"type": "user-selected log", "client": "generic"},
   "summary": {"total_lines": 1, "matched_event_lines": 1, "unknown_timestamp_lines": 0,
               "ambiguous_event_lines": 0, "timezone_unknown_lines": 0},
