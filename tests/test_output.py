@@ -228,9 +228,11 @@ def test_unidentifiable_created_file_is_not_deleted(tmp_path: Path, monkeypatch)
     def fail(fd):
         raise OSError("SYNTHETIC_FSTAT_FAILURE")
 
-    monkeypatch.setattr(os, "fstat", fail)
-    with pytest.raises(OSError):
-        write_report(target, "safe", inputs=())
+    # Keep the fault local to the operation, not pytest or the verification read.
+    with monkeypatch.context() as patch:
+        patch.setattr(os, "fstat", fail)
+        with pytest.raises(OSError, match="SYNTHETIC_FSTAT_FAILURE"):
+            write_report(target, "safe", inputs=())
     assert target.read_bytes() == b""
 
 
