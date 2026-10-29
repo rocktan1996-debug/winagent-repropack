@@ -106,8 +106,8 @@ def make_packages(source: Path, output: Path) -> dict[str, object]:
     if "LICENSE" not in base:
         raise ValueError("Final license is missing")
     output.mkdir(parents=True, exist_ok=True)
-    release = output / "WinAgent-ReproPack-v0.1.0rc1-release-source.zip"
-    audit = output / "WinAgent-ReproPack-v0.1.0rc1-independent-audit.zip"
+    release = output / "WinAgent-ReproPack-v0.1.0rc2-release-source.zip"
+    audit = output / "WinAgent-ReproPack-v0.1.0rc2-independent-audit.zip"
     manifest = {
         "scope": "explicit public source whitelist; no developer evidence or private data",
         "entries": {

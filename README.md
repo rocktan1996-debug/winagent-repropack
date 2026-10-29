@@ -1,6 +1,6 @@
 # WinAgent ReproPack
 
-**Public pre-release: [v0.1.0rc1](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1).** Independent project, not affiliated with or endorsed by OpenAI. This is an early preview, not a stable release.
+**Public pre-release: [v0.1.0rc2](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc2).** Independent project, not affiliated with or endorsed by OpenAI. This is an early preview, not a stable release.
 
 Turn one explicitly selected log and optional existing Doctor JSON into an editable Markdown issue draft or JSON v1 report. Runtime dependencies are empty: analysis uses only the Python standard library. No log discovery, automatic Doctor, network/LLM calls, subprocesses, telemetry, uploads or issue creation.
 
@@ -9,7 +9,7 @@ Turn one explicitly selected log and optional existing Doctor JSON into an edita
 ## Install locally
 
 With an existing Python 3.11+ installation, download `Source code (zip)` from the
-[public preview release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1),
+[public preview release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc2),
 extract it, and open a terminal in the directory containing `pyproject.toml` and `examples/`.
 
 Windows PowerShell:
@@ -33,7 +33,7 @@ python3 -m venv .venv
 If Linux cannot create a venv because `ensurepip` is unavailable, install your
 distribution's matching Python venv support (often `python3-venv`) and retry.
 
-Version prints `repropack 0.1.0rc1`. No activation or PATH change is needed.
+Version prints `repropack 0.1.0rc2`. No activation or PATH change is needed.
 Installation may download build dependencies; analysis is offline and has no runtime
 dependencies. Ordinary users do not need the developer test/build tools. An existing
 audited local wheel can be installed with `python -m pip install --no-index --no-deps PATH_TO_WHEEL`.

@@ -6,6 +6,8 @@ from pathlib import Path
 
 import pytest
 
+from winagent_repropack import __version__
+
 
 @pytest.fixture(scope="module")
 def packer():
@@ -70,3 +72,10 @@ def test_packaged_quickstart_includes_feedback_target(tmp_path: Path, packer) ->
             assert "(USER_FEEDBACK.md)" in quickstart
             expected_feedback = (root / "docs/USER_FEEDBACK.md").read_bytes()
             assert archive.read("docs/USER_FEEDBACK.md") == expected_feedback
+
+
+def test_package_names_match_runtime_version(tmp_path: Path, packer) -> None:
+    root = Path(__file__).resolve().parents[1]
+    result = packer.make_packages(root, tmp_path / "dist")
+    assert result["release_zip"] == f"WinAgent-ReproPack-v{__version__}-release-source.zip"
+    assert result["audit_zip"] == f"WinAgent-ReproPack-v{__version__}-independent-audit.zip"

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0rc2 — 2026-10-29 Maintenance pre-release
 
 - Reject decimal reconnect counter suffixes instead of matching their integer prefix; preserve punctuation, category priority and once-per-line ambiguity counting with synthetic regressions.
 - Include required CI/ignore files in the sdist and verify shipped public packaging inputs against the checkout in CI.
@@ -8,7 +8,8 @@
 - Strengthen installed-wheel validation using a clean offline venv, console/module checks, synthetic goldens, and no-overwrite/input-integrity assertions.
 - Align English end-user installation instructions with synthetic-first Windows/Linux onboarding.
 - Include the onboarding feedback document in source-package allowlists so the quickstart link remains usable.
-- Runtime version remains unchanged; no new release or independent adoption is claimed.
+- Scope the synthetic output fstat failure to the operation under test, avoiding interference with current pytest while retaining file-preservation assertions.
+- Update the runtime version, Markdown/JSON golden generator versions, installation docs and release ZIP filenames to `0.1.0rc2`. No stable release, PyPI publication or independent adoption is claimed.
 
 ## 0.1.0rc1 — 2026-10-23 First public pre-release and privacy hardening
 
