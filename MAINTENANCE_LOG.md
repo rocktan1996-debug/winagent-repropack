@@ -22,6 +22,13 @@ This log documents **completed and independently linkable repository activity**,
 | 2026-10-23 18:46 | First public version release | Published **v0.1.0rc1** as a **pre-release** pointing to `42fc134`. The release clearly warns that users must review generated reports before sharing and that this tool does not prove root cause. [Release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1); [post-release CI success](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/40006067398). |
 | 2026-10-24 06:38 | Post-release documentation maintenance | Updated README, CHANGELOG, SECURITY and CONTRIBUTING to reflect actual public release, verified CI and security-reporting instructions, without altering the published tag. [Commit `cc1398b`](https://github.com/rocktan1996-debug/winagent-repropack/commit/cc1398b4dcbfd7ec94b0ad62b96bb78a306cd9a7); [successful CI run](https://github.com/rocktan1996-debug/winagent-repropack/actions/runs/40071006872). |
 
+## 2026-10-25 source-distribution maintenance candidate
+
+- Reproduced a missing-input failure when running the shipped packaging tool from an extracted sdist: `.github/workflows/ci.yml` was absent; `.gitignore` was also omitted. Checkout-only tests had not detected this distribution gap.
+- Added explicit manifest entries and a read-only built-sdist verifier that compares all public packaging inputs byte-for-byte, rejecting missing, duplicate, linked or changed required members without extracting or executing them. Added CI coverage and synthetic archive regressions.
+- Local validation on Linux/Python 3.12.14: 723 tests passed, 21 skipped, 95.69% branch coverage; Ruff, dependency checks, sdist/wheel builds and both artifact verifiers passed. The extracted sdist successfully ran the offline packaging tool and 11 related regression tests.
+- This entry records a maintenance candidate, not a released version or user adoption. Local and exact-commit cross-platform results are recorded in the accompanying pull request; no runtime behavior or golden fixtures changed.
+
 ## Release and quality evidence
 
 - **Public package:** [v0.1.0rc1 GitHub pre-release](https://github.com/rocktan1996-debug/winagent-repropack/releases/tag/v0.1.0rc1); it is a source pre-release, **not** a claimed stable or PyPI release.

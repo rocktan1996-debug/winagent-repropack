@@ -33,5 +33,7 @@ jobs:
         run: python -m pip check
       - name: Build sdist and wheel
         run: python -m build --outdir artifacts/dist
+      - name: Verify source distribution packaging inputs
+        run: python tools/verify_sdist.py artifacts/dist
       - name: Verify clean-wheel synthetic demo and no-overwrite behavior
         run: python tools/verify_wheel_demo.py --wheel-dir artifacts/dist
