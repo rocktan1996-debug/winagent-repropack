@@ -34,6 +34,7 @@ PUBLIC_FILES = (
     "pyproject.toml",
     "tools/package_release.py",
     "tools/verify_wheel_demo.py",
+    "tools/verify_sdist.py",
 )
 
 # Only these trees can contribute files, and only the expected extensions.

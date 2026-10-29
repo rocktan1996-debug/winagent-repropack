@@ -1,5 +1,6 @@
 include LICENSE README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md pyproject.toml
-include tools/package_release.py tools/verify_wheel_demo.py
+include tools/package_release.py tools/verify_wheel_demo.py tools/verify_sdist.py
+include .gitignore .github/workflows/ci.yml
 recursive-include src *.py
 recursive-include tests *.py *.json *.md
 include examples/synthetic.log examples/synthetic-doctor.json examples/synthetic-doctor-v1.json
