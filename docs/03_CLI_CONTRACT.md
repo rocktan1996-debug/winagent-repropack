@@ -35,7 +35,7 @@ Priority is top-down; never double-count one line as two primary events. Case-in
 | 2 | `stream_disconnect` | `stream disconnected before completion`, `peer closed connection without sending TLS close_notify`, `error decoding response body` |
 | 3 | `capacity` | `Selected model is at capacity`, `server_overloaded` |
 | 4 | `http_503` | standalone HTTP 503 / `status code: 503` / `503 Service Unavailable` |
-| 5 | `reconnect_loop` | `Reconnecting 5/5`, or `Reconnecting 3/5` (counter required) |
+| 5 | `reconnect_loop` | `Reconnecting 5/5`, or `Reconnecting 3/5` (integer counter tokens required; decimal counters such as `3/5.0` do not match) |
 | 6 | `timeout` | `timed out`, `timeout` with concrete failure context |
 
 If both `server_overloaded` and `HTTP 503` appear on one line, classify as `capacity` and note as ambiguous; do not inflate two categories. Explicit tests decide precedence. `unknown`/unmatched lines contribute to `total_lines` but not to event counts. Match labels indicate **observed text** only.

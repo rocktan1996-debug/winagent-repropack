@@ -75,3 +75,23 @@ def test_documented_variants(text: str, expected: EventType) -> None:
 )
 def test_unmatched_and_token_boundaries(text: str) -> None:
     assert classify_line(text) is None
+
+
+@pytest.mark.parametrize("counter", ["3/5.0", "3/50.25", "3.0/5", "3/5suffix", "3/5_0"])
+def test_reconnect_requires_integer_counter_tokens(counter: str) -> None:
+    line = f"Reconnecting {counter}"
+    assert matching_categories(line) == ()
+    assert classify_line(line) is None
+    # A malformed counter must neither steal timeout priority nor add ambiguity.
+    assert matching_categories(f"{line}; request failed: timeout") == (EventType.TIMEOUT,)
+    assert matching_categories(f"HTTP 503; {line}") == (EventType.HTTP_503,)
+
+
+@pytest.mark.parametrize("suffix", ["", ".", ". Retry pending", ", retry pending", ")", ":"])
+def test_reconnect_integer_counter_preserves_punctuation(suffix: str) -> None:
+    line = f"RECONNECTING 12/50{suffix}"
+    assert matching_categories(line) == (EventType.RECONNECT_LOOP,)
+    assert matching_categories(f"{line}; request failed: timeout") == (
+        EventType.RECONNECT_LOOP,
+        EventType.TIMEOUT,
+    )

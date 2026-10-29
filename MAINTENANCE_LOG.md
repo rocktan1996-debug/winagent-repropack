@@ -11,6 +11,15 @@ This log documents **completed and independently linkable repository activity**,
 
 ## Verified maintenance timeline
 
+### 2026-10-26 (UTC) — Reconnect counter false-positive regression
+
+- Trigger: synthetic boundary checks found that `Reconnecting 3/5.0` matched the integer prefix `3/5`. With a timeout on the same line, this incorrectly selected `reconnect_loop` and added ambiguity.
+- Action: reject a decimal suffix after the denominator, while retaining ordinary punctuation and valid multi-digit counters. Added classifier and aggregation regressions for event counts, primary category, line numbers and once-per-line ambiguity. Updated the CLI contract and changelog.
+- Baseline: remote `main` was `67c528a`; draft [PR #3](https://github.com/rocktan1996-debug/winagent-repropack/pull/3) remained separate and unmerged. This change does not duplicate or incorporate that packaging fix.
+- Local evidence: before the runtime fix, focused tests reported 3 failures and 65 passes; after the fix, all 68 passed. Linux / Python 3.12.14 full suite: 728 passed, 21 skipped, 95.69% branch coverage; Ruff and dependency consistency passed. The first full invocation lacked the documented temporary parent directory and had setup errors; preparing it and rerunning resolved them without changing tests.
+- Additional verification: built sdist and wheel; clean offline wheel demo passed console/module, golden-report, no-overwrite and input-integrity checks. Separate read-only AI review found no blockers and independently reran the 68 focused tests; this is not community review.
+- Outcome: local regression repaired; remote CI and review results belong in the associated draft PR. No new release, real diagnostic data, outreach or independent adoption is claimed. Runtime version remains unchanged.
+
 | When (UTC) | Activity | Result and evidence |
 | --- | --- | --- |
 | 2026-10-23 07:50 | Initial repository preparation | Added the curated project's initial `.gitignore` and repository groundwork. [Commit `1605799`](https://github.com/rocktan1996-debug/winagent-repropack/commit/1605799840d469c6bdb370c71ee7e7251c1001e9). |

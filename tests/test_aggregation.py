@@ -40,6 +40,25 @@ def test_empty_and_no_match_lines() -> None:
     assert no_match.events == ()
 
 
+def test_decimal_reconnect_counter_does_not_inflate_counts_or_ambiguity() -> None:
+    result = aggregate_lines(
+        [
+            "Reconnecting 3/5.0",
+            "Reconnecting 3/50.25; request failed: timeout",
+            "HTTP 503; Reconnecting 3/5.0",
+            "Reconnecting 3/5.; request failed: timeout",
+        ]
+    )
+    assert result.total_lines == 4
+    assert result.matched_event_lines == 3
+    assert result.warnings.ambiguous_event_lines == 1
+    assert [(event.type, event.count, event.line_numbers) for event in result.events] == [
+        (EventType.HTTP_503, 1, (3,)),
+        (EventType.RECONNECT_LOOP, 1, (4,)),
+        (EventType.TIMEOUT, 1, (2,)),
+    ]
+
+
 def test_absolute_times_differ_from_input_order() -> None:
     result = aggregate_lines(
         [
