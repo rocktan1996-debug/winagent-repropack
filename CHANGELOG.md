@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0rc3 — 2026-11-03 Aggregation optimization pre-release
+
+- Allocate aggregation state only on the first occurrence of each event category, rather than constructing and discarding an accumulator and list on every matched line. At the 50,000-line limit, a single-category log now constructs one accumulator instead of 50,000.
+- Add maximum-size synthetic regressions covering allocation counts, ambiguity counting, bounded line-number retention and optional canonical excerpts. Report semantics, input limits and privacy guarantees remain unchanged.
+- Align runtime, docs, goldens and release filenames with `0.1.0rc3`; GitHub preview only, no PyPI upload or stable promotion.
+
 ## 0.1.0rc2 — 2026-10-29 Maintenance pre-release
 
 - Reject decimal reconnect counter suffixes instead of matching their integer prefix; preserve punctuation, category priority and once-per-line ambiguity counting with synthetic regressions.

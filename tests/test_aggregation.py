@@ -132,3 +132,33 @@ def test_model_contains_only_fixed_aggregate_fields() -> None:
     value = repr(asdict(result)) + repr(result)
     for private in (canary, "Authorization", "DEMO_NOT_VALID", "ExampleUser", "<script>"):
         assert private not in value
+
+
+@pytest.mark.parametrize("include_excerpts", [False, True])
+def test_accumulator_allocations_are_bounded_by_observed_categories(
+    monkeypatch: pytest.MonkeyPatch, include_excerpts: bool
+) -> None:
+    from winagent_repropack import aggregation
+
+    original = aggregation._EventAccumulator
+    created = 0
+
+    def counted_accumulator():
+        nonlocal created
+        created += 1
+        return original()
+
+    monkeypatch.setattr(aggregation, "_EventAccumulator", counted_accumulator)
+    # Exercise the maximum supported log without retaining its source lines.
+    result = aggregation._analyze_lines(
+        ("HTTP 503" if number % 2 else "server_overloaded HTTP 503" for number in range(50_000)),
+        include_excerpts,
+    )
+    assert created == 2
+    assert result.summary.matched_event_lines == 50_000
+    assert result.summary.warnings.ambiguous_event_lines == 25_000
+    assert [event.count for event in result.summary.events] == [25_000, 25_000]
+    assert all(len(event.line_numbers) == 20 for event in result.summary.events)
+    assert [sample.samples for sample in result.excerpts] == (
+        [("server_overloaded",) * 3, ("HTTP 503",) * 3] if include_excerpts else []
+    )

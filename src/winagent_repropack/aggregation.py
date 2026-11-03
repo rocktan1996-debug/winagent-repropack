@@ -72,7 +72,10 @@ def _analyze_lines(lines: Iterable[str], include_excerpts: bool = False) -> LogA
         if matches:
             matched += 1
             ambiguous += int(len(matches) > 1)
-            group = groups.setdefault(matches[0], _EventAccumulator())
+            # Construct state only for a newly observed category, not every line.
+            group = groups.get(matches[0])
+            if group is None:
+                group = groups[matches[0]] = _EventAccumulator()
             group.add(total, timestamp.value if aware else None)
             if include_excerpts:
                 selected = samples.setdefault(matches[0], [])
